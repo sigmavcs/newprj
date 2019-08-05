@@ -23,7 +23,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "newprj/lambda.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "let AWS = require('aws-sdk');\nconst sns = new AWS.SNS();\n\nexports.handler = function (event, context, callback) {\n\n    sns.publish({\n        Message: 'Message',\n        Subject: 'Subject',\n        MessageAttributes: {},\n        MessageStructure: 'String',\n        TopicArn: 'arn:aws:sns:us-east-1:318300609668:my_topic'\n    }).promise()\n        .then(data => {\n            // your code goes here\n        })\n        .catch(err => {\n            // error handling goes here\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -57,7 +57,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "newprj/sub/func.js",
-        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed!!!\"});\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -76,7 +76,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "newprj/sub/mypy.py",
-        "code": "def handler(event, context):\n    \n    return {\"message\": \"Successfully executed\"}\n",
+        "code": "import boto3\nddb = boto3.client(\"dynamodb\")\n\ndef handler(event, context):\n    \n    try:\n        data = ddb.get_item(\n            TableName='BTMenu',\n            Key={'itemCode':{'S':'name'}}\n        )\n    except BaseException as e:\n        print(e)\n        raise(e)\n\n    return {\"message\": \"Successfully executed!!!\"}\n",
         "config": {
           "runtime": "python2.7",
           "handler": "handler",
@@ -106,16 +106,75 @@
         "children": [],
         "isRemovable": true,
         "filePath": "newprj/sub/data.json",
-        "code": ""
+        "code": "{\n    \"values\": [\n        {\n            \"name\": \"Chamath\",\n            \"id\": 0\n        }\n    ]\n}"
       }
     },
     "deletedFiles": [],
     "rootNode": "5e6a0eae-cfab-4668-a064-357e19bb5d4b",
     "openFiles": [
-      "04dfb160-6468-4479-ae12-954ac3dce6fa"
+      "04dfb160-6468-4479-ae12-954ac3dce6fa",
+      "0410bf67-e242-44ad-99b3-7a2df7b8a3f9",
+      "66746ba2-ec31-403c-8079-198d822d2b6c",
+      "a2aa3397-d766-42a1-a6f0-38e0d8f57ad3"
     ],
-    "currentFileId": "04dfb160-6468-4479-ae12-954ac3dce6fa",
-    "resources": {},
+    "currentFileId": "a2aa3397-d766-42a1-a6f0-38e0d8f57ad3",
+    "resources": {
+      "snsusEast1mytopic": {
+        "name": "snsusEast1mytopic",
+        "type": "SNS",
+        "config": {
+          "topicMode": 0,
+          "topicName": "my_topic",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:my_topic",
+          "topicRegion": "us-east-1",
+          "snsType": 0,
+          "topicDisplayName": "My Topic",
+          "subscriptions": [
+            {
+              "type": "http",
+              "endpoint": "http://safari.com"
+            },
+            {
+              "type": "http",
+              "endpoint": "http://"
+            }
+          ]
+        }
+      },
+      "ddbBTMenu": {
+        "name": "ddbBTMenu",
+        "type": "DynamoDB",
+        "config": {
+          "mode": 1,
+          "operation": "get",
+          "table": {
+            "arn": "arn:aws:dynamodb:us-east-1:318300609668:table/BTMenu",
+            "name": "BTMenu",
+            "partitionKey": "itemCode",
+            "partitionKeyType": "S",
+            "hasSortKey": false,
+            "sortKey": "",
+            "sortKeyType": "S",
+            "payPerRequest": true,
+            "mode": 1
+          },
+          "isGlobalEditMode": false,
+          "parameters": {
+            "Key": {
+              "itemCode": "name"
+            },
+            "Item": {},
+            "ExpressionAttributeValues": {}
+          },
+          "triggerParams": {},
+          "validator": {
+            "validatableFields": {},
+            "validity": true
+          },
+          "valid": true
+        }
+      }
+    },
     "customTemplate": {
       "dialect": null,
       "definitions": {}
@@ -139,7 +198,22 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "javascript",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        },
+        "boto3": {
+          "name": "boto3",
+          "language": "python",
+          "version": "1.9.6",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
     }
   },
   "PROJECT_META": {
@@ -149,7 +223,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1564989035799
+    "lastSave": 1564989313837
   },
   "VCS_STATE": {
     "provider": "GitHub",
