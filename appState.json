@@ -1,0 +1,161 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "5e6a0eae-cfab-4668-a064-357e19bb5d4b": {
+        "id": "5e6a0eae-cfab-4668-a064-357e19bb5d4b",
+        "parent": null,
+        "name": "newprj",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "04dfb160-6468-4479-ae12-954ac3dce6fa",
+          "eaba7bc7-7761-4ac8-b49f-3acd6b76b80c"
+        ],
+        "isRemovable": false,
+        "filePath": "newprj"
+      },
+      "04dfb160-6468-4479-ae12-954ac3dce6fa": {
+        "id": "04dfb160-6468-4479-ae12-954ac3dce6fa",
+        "parent": "5e6a0eae-cfab-4668-a064-357e19bb5d4b",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "newprj/lambda.js",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
+      },
+      "eaba7bc7-7761-4ac8-b49f-3acd6b76b80c": {
+        "id": "eaba7bc7-7761-4ac8-b49f-3acd6b76b80c",
+        "parent": "5e6a0eae-cfab-4668-a064-357e19bb5d4b",
+        "name": "sub",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "a2aa3397-d766-42a1-a6f0-38e0d8f57ad3",
+          "66746ba2-ec31-403c-8079-198d822d2b6c",
+          "eaa8aa2f-f04c-4d98-aa8e-aad772f127c3",
+          "0410bf67-e242-44ad-99b3-7a2df7b8a3f9"
+        ],
+        "isRemovable": true,
+        "filePath": "newprj/sub"
+      },
+      "a2aa3397-d766-42a1-a6f0-38e0d8f57ad3": {
+        "id": "a2aa3397-d766-42a1-a6f0-38e0d8f57ad3",
+        "parent": "eaba7bc7-7761-4ac8-b49f-3acd6b76b80c",
+        "name": "func.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "newprj/sub/func.js",
+        "code": "exports.handler = function(event, context, callback) {\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
+      },
+      "66746ba2-ec31-403c-8079-198d822d2b6c": {
+        "id": "66746ba2-ec31-403c-8079-198d822d2b6c",
+        "parent": "eaba7bc7-7761-4ac8-b49f-3acd6b76b80c",
+        "name": "mypy.py",
+        "type": "PYTHON_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "newprj/sub/mypy.py",
+        "code": "def handler(event, context):\n    \n    return {\"message\": \"Successfully executed\"}\n",
+        "config": {
+          "runtime": "python2.7",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
+      },
+      "eaa8aa2f-f04c-4d98-aa8e-aad772f127c3": {
+        "id": "eaa8aa2f-f04c-4d98-aa8e-aad772f127c3",
+        "parent": "eaba7bc7-7761-4ac8-b49f-3acd6b76b80c",
+        "name": "__init__.py",
+        "type": "PYTHON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "newprj/sub/__init__.py",
+        "code": ""
+      },
+      "0410bf67-e242-44ad-99b3-7a2df7b8a3f9": {
+        "id": "0410bf67-e242-44ad-99b3-7a2df7b8a3f9",
+        "parent": "eaba7bc7-7761-4ac8-b49f-3acd6b76b80c",
+        "name": "data.json",
+        "type": "JSON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "newprj/sub/data.json",
+        "code": ""
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "5e6a0eae-cfab-4668-a064-357e19bb5d4b",
+    "openFiles": [
+      "04dfb160-6468-4479-ae12-954ac3dce6fa"
+    ],
+    "currentFileId": "04dfb160-6468-4479-ae12-954ac3dce6fa",
+    "resources": {},
+    "customTemplate": {
+      "dialect": null,
+      "definitions": {}
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      },
+      {
+        "lambdaId": "66746ba2-ec31-403c-8079-198d822d2b6c",
+        "varKey": "PYTHONPATH",
+        "varValue": "/var/runtime:/var/task/newprj/sub",
+        "shouldPersist": true,
+        "displayOnly": false,
+        "editable": true
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {}
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "newprj",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1564989035799
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "newprj",
+      "url": "https://github.com/sigmavcs/newprj"
+    }
+  }
+}
